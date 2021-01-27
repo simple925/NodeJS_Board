@@ -29,7 +29,7 @@ app.use(methodOverride('_method'));
 
 // Routes
 app.use('/', require('./routers/home'));
-app.use('/posts', require('./reuters/posts'));
+app.use('/posts', require('./routers/posts'));
 
 // Port setting
 var port = 3000;
