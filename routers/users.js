@@ -57,7 +57,7 @@ router.put('/:username', function(req, res, next){
         user[p] = req.body[p];
       }
 
-      // save update user
+      // save updated user
       user.save(function(err, user){
         if(err) return res.json(err);
         res.redirect('/users/' + user.username);

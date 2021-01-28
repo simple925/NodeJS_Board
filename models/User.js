@@ -1,13 +1,11 @@
-// models/User.js
-
 var mongoose = require('mongoose');
 
 // schema
 var userSchema = mongoose.Schema({
-  username: {type:String, required:[true, 'Username is required!'], unique:true},
-  password: {type:String, required:[true, 'Password is required!'], select:false},
-  name:     {type:String, required:[true, 'Name is required!']},
-  email:    {type:String}
+  username:{type:String, required:[true,'Username is required!'], unique:true},
+  password:{type:String, required:[true,'Password is required!'], select:false},
+  name:{type:String, required:[true,'Name is required!']},
+  email:{type:String}
 },{
   toObject:{virtuals:true}
 });
@@ -23,7 +21,7 @@ userSchema.virtual('originalPassword')
 
 userSchema.virtual('currentPassword')
   .get(function(){ return this._currnetPassowrd; })
-  .set(function(value){ this._namePassword=value; });
+  .set(function(value){ this._currnetPassowrd=value; });
 
 userSchema.virtual('newPassword')
   .get(function(){ return this._newPassword; })
@@ -32,7 +30,7 @@ userSchema.virtual('newPassword')
 // password validation
 userSchema.path('password').validate(function(v){
   var user = this;
-
+  debugger;
   // create user
   if(user.isNew){
     if(!user.passwordConfirmation){
